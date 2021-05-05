@@ -5,7 +5,7 @@ services:
     ports:
       - "8000:8000"
   eligibility-service:
-    build: ./services/eligibility
+    build: ./services/dummy
     ports:
       - "8100:8100"
   jupyter:
