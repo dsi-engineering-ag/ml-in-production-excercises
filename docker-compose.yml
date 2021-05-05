@@ -2,8 +2,12 @@ version: "3.9"
 services:
   frontend:
     build: ./services/frontend
+    environment:
+      - ELIGIBILITY_API_ENDPOINT=http://eligibility-service:8100
     ports:
       - "8000:8000"
+    links:
+      - eligibility-service
   eligibility-service:
     build: ./services/dummy
     ports:
