@@ -1,0 +1,20 @@
+version: "3.9"
+services:
+  frontend:
+    build: ./services/frontend
+    ports:
+      - "8000:8000"
+  eligibility-service:
+    build: ./services/eligibility
+    ports:
+      - "8100:8100"
+  jupyter:
+    build: ./services/support/jupyter
+    ports:
+      - "8888:8888"
+    volumes:
+      - .:/home/jovyan/work:z
+  mlflow:
+    build: ./services/support/mlflow
+    ports:
+      - "5500:5500"

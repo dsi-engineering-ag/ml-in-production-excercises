@@ -1,0 +1,17 @@
+artifact_path: model
+flavors:
+  python_function:
+    env: conda.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.pkl
+    python_version: 3.8.8
+  sklearn:
+    pickled_model: model.pkl
+    serialization_format: cloudpickle
+    sklearn_version: 0.23.2
+run_id: cc57406a5c014e898e38dab3322d1b40
+signature:
+  inputs: '[{"name": "loan_amnt", "type": "double"}, {"name": "annual_inc", "type":
+    "double"}]'
+  outputs: '[{"type": "long"}]'
+utc_time_created: '2021-05-05 05:58:19.871922'
