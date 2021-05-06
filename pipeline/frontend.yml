@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-deployment
+  labels:
+    app: sustaino
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sustaino-frontend
+  template:
+    metadata:
+      labels:
+        app: sustaino-frontend
+    spec:
+      containers:
+        - name: frontend
+          image: fluescher/sustaino-frontend
+          env:
+            - name: ELIGIBILITY_API_ENDPOINT
+              value: http://eligibility-service:8100
+          ports:
+            - containerPort: 8000
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: frontend-service
+spec:
+  selector:
+    app: sustaino-frontend
+  ports:
+    - protocol: TCP
+      port: 8000
+      targetPort: 8000
+  type: ClusterIP
+---
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: sustaino-load-balancer
+spec:
+  backend:
+    serviceName: frontend-service
+    servicePort: 8000
+
+

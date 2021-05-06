@@ -1,0 +1,30 @@
+steps:
+  # Fetch data
+  - name: gcr.io/google.com/cloudsdktool/cloud-sdk
+    entrypoint: 'bash'
+    args:
+    - -c
+    - |
+      gunzip -c notebooks/clean-loan-data.csv.gz > notebooks/clean-loan-data.csv
+ 
+  # Install dependencies
+  - name: python
+    entrypoint: pip
+    args: ["install", "-r", "pipeline/requirements-train.txt", "--user"]
+
+  # Train Model
+  - name: python
+    entrypoint: python
+    args: ["pipeline/train_model.py"]
+
+  # Docker Build
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 
+           'gcr.io/$PROJECT_ID/<yourname>/eligiblity-service:latest', './services/eligibility']
+
+  # Docker push to Google Container Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push',  'gcr.io/$PROJECT_ID/<yourname>/eligiblity-service:latest']
+timeout: 3600s
+options:
+ machineType: 'E2_HIGHCPU_8'
