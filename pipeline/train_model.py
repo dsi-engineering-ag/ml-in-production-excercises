@@ -35,6 +35,11 @@ def preprocess(df):
 
 def split(df):
     X_train, X_test, y_train, y_test = train_test_split(df.drop('TARGET',axis=1),df['TARGET'],test_size=0.15,random_state=101,  stratify=df['TARGET'])
+
+    sc = StandardScaler()
+    X_train = sc.fit_transform(X_train)
+    X_test=sc.transform(X_test)
+    
     return X_train, X_test, y_train, y_test
 
 
