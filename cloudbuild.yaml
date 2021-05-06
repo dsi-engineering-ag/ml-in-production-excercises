@@ -8,12 +8,12 @@ steps:
       gunzip -c notebooks/clean-loan-data.csv.gz > notebooks/clean-loan-data.csv
  
   # Install dependencies
-  - name: python
+  - name: frolvlad/alpine-python-machinelearning
     entrypoint: pip
     args: ["install", "-r", "pipeline/requirements-train.txt", "--user"]
 
   # Train Model
-  - name: python
+  - name: frolvlad/alpine-python-machinelearning
     entrypoint: python
     args: ["pipeline/train_model.py"]
 
@@ -24,7 +24,5 @@ steps:
 
   # Docker push to Google Container Registry
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push',  'gcr.io/$PROJECT_ID/<yourname>/eligiblity-service:latest']
+    args: ['push',  'gcr.io/$PROJECT_ID/florian/eligiblity-service:latest']
 timeout: 3600s
-options:
- machineType: 'E2_HIGHCPU_8'
