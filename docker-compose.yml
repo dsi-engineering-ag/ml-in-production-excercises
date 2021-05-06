@@ -18,6 +18,8 @@ services:
       - "8888:8888"
     volumes:
       - .:/home/jovyan/work:z
+    links:
+      - mlflow
   mlflow:
     build: ./services/support/mlflow
     ports:
