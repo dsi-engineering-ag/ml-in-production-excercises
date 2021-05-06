@@ -20,6 +20,7 @@ services:
       - .:/home/jovyan/work:z
     links:
       - mlflow
+      - eligibility-service
   mlflow:
     build: ./services/support/mlflow
     ports:
