@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: graphana-ingress
+  namespace: seldon-system
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /*
+        pathType: Prefix
+        backend:
+          service:
+            name: seldon-core-analytics-grafana
+            port:
+              number: 80

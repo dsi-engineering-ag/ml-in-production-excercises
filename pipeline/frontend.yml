@@ -19,7 +19,7 @@ spec:
           image: fluescher/sustaino-frontend
           env:
             - name: ELIGIBILITY_API_ENDPOINT
-              value: http://eligibility-service:8100
+              value: http://eligibility-service:9000/predict
           ports:
             - containerPort: 8000
 ---

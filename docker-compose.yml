@@ -3,7 +3,7 @@ services:
   frontend:
     build: ./services/frontend
     environment:
-      - ELIGIBILITY_API_ENDPOINT=http://eligibility-service:8100
+      - ELIGIBILITY_API_ENDPOINT=http://eligibility-service:9000/predict
     ports:
       - "8000:8000"
     links:
@@ -11,7 +11,7 @@ services:
   eligibility-service:
     build: ./services/dummy
     ports:
-      - "8100:8100"
+      - "9000:9000"
   jupyter:
     image: fluescher/jupyter
     ports:

@@ -4,7 +4,8 @@ COPY . /app
 WORKDIR /app
 RUN pip install -r requirements.txt
 
-ENV MODEL_NAME DummyModel
+
+ENV MODEL_NAME Combiner
 ENV SERVICE_TYPE MODEL
 ENV PERSISTENCE 0
 

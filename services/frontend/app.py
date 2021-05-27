@@ -6,12 +6,12 @@ import os
 app = Flask(__name__)
 
 PORT = os.environ.get("PORT", "5000")
-API_ENDPOINT = os.environ.get("ELIGIBILITY_API_ENDPOINT", "http://localhost:8100")
+API_ENDPOINT = os.environ.get("ELIGIBILITY_API_ENDPOINT", "http://localhost:9000/predict")
 
 @app.route("/api/v1/predict", methods=["GET", "POST"])
 def predict():
-    r = requests.get(url=API_ENDPOINT+'/predict', json=request.get_json())
-
+    r = requests.get(url=API_ENDPOINT, json=request.get_json())
+    print(r)
     data = r.json()
 
     return jsonify(data)
