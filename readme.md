@@ -9,6 +9,6 @@ To start execute `docker-compose up` inside this directory. After that you have 
 | Name                | Beschreibung                         | Link                  |
 |---------------------|--------------------------------------|-----------------------|
 | Frontend            | Sustaino Frontend                    | http://localhost:8000 |
-| Eligibility Service |  Service that determines eligibility | http://localhost:8100 |
+| Eligibility Service |  Service that determines eligibility | http://localhost:9000 |
 | Notebook Server     | Jupyter Notebook Server              | http://localhost:8888 |
 | ML Flow UI          | MLFlow Tracking Backend Server       | http://localhost:5500 |
