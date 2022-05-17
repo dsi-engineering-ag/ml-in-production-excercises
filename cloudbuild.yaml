@@ -7,13 +7,8 @@ steps:
     - |
       gunzip -c notebooks/clean-loan-data.csv.gz > notebooks/clean-loan-data.csv
  
-  # Install dependencies
-  - name: frolvlad/alpine-python-machinelearning
-    entrypoint: pip
-    args: ["install", "-r", "pipeline/requirements-train.txt", "--user"]
-
   # Train Model
-  - name: frolvlad/alpine-python-machinelearning
+  - name: fluescher/jupyter
     entrypoint: python
     args: ["pipeline/train_model.py"]
 
