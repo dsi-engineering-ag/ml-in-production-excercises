@@ -4,7 +4,13 @@
 
 
 1. Instal Ambassador: https://github.com/datawire/ambassador-docs/blob/master/docs/edge-stack/1.4/topics/install/install-ambassador-oss.md 
+
+Update documentation: 
+
+https://www.getambassador.io/docs/edge-stack/1.13/topics/install/install-ambassador-oss/
+
 2. Install Seldon Core with Ambassador: https://docs.seldon.io/projects/seldon-core/en/latest/examples/seldon_core_setup.html
+
 
 helm install seldon-core seldon-core-operator \
     --repo https://storage.googleapis.com/seldon-charts \
