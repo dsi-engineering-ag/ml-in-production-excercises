@@ -1,4 +1,4 @@
-# Sustaino Graphana/Prometheus Queries
+# Sustaino Prometheus Queries
 
 ## Find all sustaino eligibility metrics
 
@@ -9,7 +9,7 @@
 ## Find my susteino eligibility metrics
 
 ``` 
-{__name__=~"not_eligible_total|eligible_total",kubernetes_namespace="florian"}
+{__name__=~"not_eligible_total|eligible_total",namespace="florian"}
 ``` 
 
 ## Find Rate Seldon API Requests 
