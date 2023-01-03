@@ -1,8 +1,8 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: graphana-ingress
-  namespace: seldon-system
+  name: prometheus-ingress
+  namespace: seldon-monitoring
 spec:
   rules:
   - http:
@@ -11,6 +11,6 @@ spec:
         pathType: ImplementationSpecific
         backend:
           service:
-            name: seldon-core-analytics-grafana
+            name: seldon-monitoring-prometheus
             port:
-              number: 80
+              number: 9090

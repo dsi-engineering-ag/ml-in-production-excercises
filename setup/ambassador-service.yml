@@ -1,13 +1,22 @@
----
-apiVersion: v1
-kind: Service
+apiVersion: getambassador.io/v3alpha1
+kind: Listener
 metadata:
-  name: ambassador
+  name: edge-stack-listener-8080
+  namespace: ambassador
 spec:
-  type: LoadBalancer
-  externalTrafficPolicy: Local
-  ports:
-   - port: 80
-     targetPort: 8080
-  selector:
-    service: ambassador
+  port: 8080
+  protocol: HTTP
+  securityModel: INSECURE
+  hostBinding:
+    namespace:
+      from: ALL
+---
+apiVersion: getambassador.io/v3alpha1
+kind: Host
+metadata:
+  name: mlprodcution-host
+spec:
+  hostname: "mlproduction.dsiag.ch"
+  requestPolicy:
+    insecure:
+      action: Route

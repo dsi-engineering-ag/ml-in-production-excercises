@@ -3,11 +3,11 @@
 ## Install Seldon Core
 
 
-1. Instal Ambassador: https://github.com/datawire/ambassador-docs/blob/master/docs/edge-stack/1.4/topics/install/install-ambassador-oss.md 
+1. Instal Ambassador
 
 Update documentation: 
+https://www.getambassador.io/docs/edge-stack/3.3/tutorials/getting-started
 
-https://www.getambassador.io/docs/edge-stack/1.13/topics/install/install-ambassador-oss/
 
 2. Install Seldon Core with Ambassador: https://docs.seldon.io/projects/seldon-core/en/latest/examples/seldon_core_setup.html
 
@@ -20,10 +20,14 @@ helm install seldon-core seldon-core-operator \
 
 3. Install Seldon Core Analytics
 
-helm install seldon-core-analytics seldon-core-analytics \
-   --repo https://storage.googleapis.com/seldon-charts \
-   --namespace seldon-system
+https://docs.seldon.io/projects/seldon-core/en/latest/analytics/analytics.html#installation
 
+helm upgrade --install seldon-monitoring kube-prometheus \
+    --version 6.9.5 \
+    --set fullnameOverride=seldon-monitoring \
+    --namespace seldon-monitoring \
+    --repo https://charts.bitnami.com/bitnami
 
-4. Get Ambassador IP and configure dsi DNS: mlproduction.dsiag.ch
-5. Create Graphana Ingress and configure dsi DNS: monitoring.mlproduction.dsiag.ch
+4. Create Ambassador Listener: setup/*.yml
+5. Get Ambassador IP (Loadbalancer Service) and configure dsi DNS: mlproduction.dsiag.ch
+6. Create Graphana Ingress and configure dsi DNS: monitoring.mlproduction.dsiag.ch
