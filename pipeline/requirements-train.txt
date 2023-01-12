@@ -1,5 +1,6 @@
-imbalanced-learn
-scikit-learn
-numpy
-pandas
-joblib
+joblib=1.2.0
+scikit-learn=0.23.2
+matplotlib=3.4.1
+numpy=1.20.2
+pandas=1.2.4
+imbalanced-learn=0.7.0
