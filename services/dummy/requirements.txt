@@ -1,6 +1,6 @@
 scikit-learn==0.23.2
 seldon-core==1.8.0
-joblib==1.0.1
+joblib==1.2.0
 
 Jinja2==3.0.3
 itsdangerous==2.0.1
