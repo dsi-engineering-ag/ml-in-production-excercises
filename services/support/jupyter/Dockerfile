@@ -1,4 +1,4 @@
-FROM jupyter/scipy-notebook:python-3.7.12
+FROM jupyter/scipy-notebook:python-3.7
 
 # RUN apt-get update && apt-get install graphwiz
 
