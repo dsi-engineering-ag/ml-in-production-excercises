@@ -19,5 +19,5 @@ steps:
 
   # Docker push to Google Container Registry
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push',  'gcr.io/$PROJECT_ID/<yourname>/eligiblity-service:latest']
+    args: ['push',  'gcr.io/$PROJECT_ID/<yourname>/eligibility-service:latest']
 timeout: 3600s
