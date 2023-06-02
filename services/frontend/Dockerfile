@@ -7,7 +7,7 @@ COPY . .
 RUN npm run build
 
 # production stage
-FROM python:3.7-slim
+FROM python:3.7
 
 COPY --from=build-stage /app/dist /app/
 COPY requirements.txt /app
