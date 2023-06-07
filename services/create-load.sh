@@ -1,5 +1,5 @@
 #!/bin/bash
-
+ 
 NAMESPACE="${NAMESPACE:-default}"
 MODEL="${MODEL:-seldon-model}"
 ITERATIONS="${ITERATIONS:-1000}"
