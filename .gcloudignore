@@ -2,4 +2,4 @@
 /.git
 /.dvc
 #!include:.gitignore
-
+/services/eligibility/eligibility_pipeline.joblib
