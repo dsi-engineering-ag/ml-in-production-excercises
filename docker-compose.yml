@@ -13,7 +13,8 @@ services:
     ports:
       - "9000:9000"
   jupyter:
-    image: fluescher/jupyter
+    # image: fluescher/jupyter
+    build: ./services/support/jupyter
     ports:
       - "8888:8888"
     volumes:
@@ -25,3 +26,5 @@ services:
     build: ./services/support/mlflow
     ports:
       - "5500:5500"
+    volumes:
+      - ./artifacts:/tmp/artifacts/
