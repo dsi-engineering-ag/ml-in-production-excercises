@@ -1,11 +1,7 @@
-FROM python:3.7
+FROM python:3.13
 
 COPY . /app
 WORKDIR /app
 RUN pip install -r requirements.txt
 
-ENV MODEL_NAME DummyModel
-ENV SERVICE_TYPE MODEL
-ENV PERSISTENCE 0
-
-CMD exec seldon-core-microservice $MODEL_NAME --service-type $SERVICE_TYPE --persistence $PERSISTENCE 
+CMD ["gunicorn", "--bind",  "0.0.0.0:9000", "ModelService:app"]
