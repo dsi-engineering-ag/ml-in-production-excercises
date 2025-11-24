@@ -8,7 +8,7 @@ WAIT_TIME="${WAIT_TIME:-0.5}"
 counter=1
 while [ $counter -le $ITERATIONS ]
 do
-wget -O- mlproduction.dsiag.ch/seldon/$NAMESPACE/$MODEL/api/v1.0/predictions --post-data '{"data": { "ndarray": [[25000, 189625]]}}' --header='Content-Type:application/json'
+wget -O- mlproduction.dsiag.ch/$NAMESPACE/predict --post-data '{"data": { "ndarray": [[25000, 189625]]}}' --header='Content-Type:application/json'
 sleep $WAIT_TIME
 ((counter++))
 done

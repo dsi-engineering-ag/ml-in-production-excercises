@@ -1,33 +1,63 @@
-# Prepare Kubernetes Cluster
+# Setup
 
-## Install Seldon Core
+In order to be able to do the excercises, a kubernetes cluster is required.
 
+## Prepare Cluster
 
-1. Instal Ambassador
+- Create GKE standard cluster
 
-Update documentation: 
-https://www.getambassador.io/docs/edge-stack/3.3/tutorials/getting-started
+## Prepare Gateway
 
+### Install Envoy Gateway
 
-2. Install Seldon Core with Ambassador: https://docs.seldon.io/projects/seldon-core/en/latest/examples/seldon_core_setup.html
+```bash
+kubectl apply -f https://github.com/kubernetes-sigs/gateway-api/releases/download/v1.1.0/standard-install.yaml
+```
 
+```bash
+# Add the Helm repo (if you haven't already)
+helm install eg oci://docker.io/envoyproxy/gateway-helm \
+  --version v1.2.0 \
+  -n envoy-gateway-system \
+  --create-namespace
+```
 
-helm install seldon-core seldon-core-operator \
-    --repo https://storage.googleapis.com/seldon-charts \
-    --set usageMetrics.enabled=true \
-    --set ambassador.enabled=true \
-    --namespace seldon-system
+```bash
+kubectl wait --timeout=5m -n envoy-gateway-system deployment/envoy-gateway --for=condition=Available
+```
 
-3. Install Seldon Core Analytics
+### Create ML in Prod Gateway
 
-https://docs.seldon.io/projects/seldon-core/en/latest/analytics/analytics.html#installation
+```bash
+kubectl apply -f setup/mlprod-gatway.yml
+```
 
-helm upgrade --install seldon-monitoring kube-prometheus \
-    --version 6.9.5 \
-    --set fullnameOverride=seldon-monitoring \
-    --namespace seldon-monitoring \
-    --repo https://charts.bitnami.com/bitnami
+## Install Prometheus
 
-4. Create Ambassador Listener: setup/*.yml
-5. Get Ambassador IP (Loadbalancer Service) and configure dsi DNS: mlproduction.dsiag.ch
-6. Create Graphana Ingress and configure dsi DNS: monitoring.mlproduction.dsiag.ch
+```bash
+helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+helm repo update
+helm install prometheus prometheus-community/kube-prometheus-stack --create-namespace --namespace monitoring
+```
+
+## Configure scraping
+
+```bash
+k apply -f setup/monitoring-selector.yml
+```
+
+## Expose Prometheus
+
+```bash
+k apply -f setup/prometheus-ingress.yml
+```
+
+## TODO Excercise
+
+Monitoring: update pod labels
+
+```yaml
+monitor: "true"
+```
+
+Update deployment exercises
