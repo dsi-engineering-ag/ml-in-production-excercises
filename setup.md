@@ -29,7 +29,7 @@ kubectl wait --timeout=5m -n envoy-gateway-system deployment/envoy-gateway --for
 ### Create ML in Prod Gateway
 
 ```bash
-kubectl apply -f setup/mlprod-gatway.yml
+kubectl apply -f setup/mlprod-gateway.yml
 ```
 
 ## Install Prometheus
