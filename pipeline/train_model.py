@@ -26,7 +26,7 @@ def preprocess(df):
     # specify target. Eligible if not defaulted
     df['TARGET'] = [0 if i=='Default' else 1 for i in df['loan_status']]
 
-    df.drop(df.columns.difference(['loan_amnt', 'annual_inc', 'TARGET']), 1, inplace=True)
+    df.drop(df.columns.difference(['loan_amnt', 'annual_inc', 'TARGET']), axis=1, inplace=True)
     df = df.dropna()
     df = pd.get_dummies(df)
 
