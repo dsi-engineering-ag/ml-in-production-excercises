@@ -13,8 +13,7 @@ services:
     ports:
       - "9000:9000"
   jupyter:
-    # image: fluescher/jupyter
-    build: ./services/support/jupyter
+    image: fluescher/jupyter
     ports:
       - "8888:8888"
     volumes:
