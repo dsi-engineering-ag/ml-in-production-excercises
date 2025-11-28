@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: eligibility
-          image: fluescher/sustaino-dummy-service:flask
+          image: fluescher/sustaino-dummy-service
           ports:
             - name: web
               containerPort: 9000
