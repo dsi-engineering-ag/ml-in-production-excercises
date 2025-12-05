@@ -1,5 +1,11 @@
 # Sustaino Prometheus Queries
 
+## Find metric in your namespace only
+
+```
+eligible_total{namespace="test"}
+```
+
 ## Find all sustaino eligibility metrics
 
 ```
@@ -8,12 +14,6 @@
 
 ## Find my susteino eligibility metrics
 
-``` 
-{__name__=~"not_eligible_total|eligible_total",namespace="florian"}
-``` 
-
-## Find Rate Seldon API Requests 
-
 ```
-rate(seldon_api_executor_client_requests_seconds_sum[5m])
+{__name__=~"not_eligible_total|eligible_total",namespace="florian"}
 ```
