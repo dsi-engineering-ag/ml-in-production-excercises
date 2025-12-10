@@ -17,7 +17,8 @@ spec:
     spec:
       containers:
         - name: eligibility
-          image: fluescher/sustaino-dummy-service
+          image: fluescher/sustaino-dummy-service:2025-hs
+          imagePullPolicy: Always
           ports:
             - name: web
               containerPort: 9000
